@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a th:href="@{/student/create}">Create new student</a>
+<h1>List Student</h1>
+<form action="/student" method="get">
+  <input type="text" name="q" placeholder="search">
+  <button>Search</button>
+</form>
+<form action="/student/search" method="get">
+  <input type="text" name="q" placeholder="search voi getMapping /search">
+  <button>Search</button>
+</form>
+<table>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Address</td>
+    <td>Image</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+  <tr th:each="student, studentStat : ${students}">
+    <td th:text="${studentStat.count}"></td>
+    <td th:text="${student.name}"></td>
+    <td th:text="${student.price}"></td>
+    <td th:text="${student.description}"></td>
+    <td><img width="150" height="150" th:src="@{'/img/' + ${student.image}}"></td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+</table>
+</body>
+</html>
